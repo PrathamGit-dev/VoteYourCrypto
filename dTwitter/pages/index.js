@@ -18,7 +18,8 @@ export default function Home() {
   const [addressDetails, setAddressDetails] = useState('')
   const [voted, setVoted] = useState(1)
   const [weight, setWeight] = useState(0)
-  const addressMap = {0:"A",1:"B",2:"C"};
+  const addressMap = {0:"Bitcoin",1:"Ethereum",2:"Binance"};
+
 
   useEffect(() => {
     if (vmContract){
@@ -33,7 +34,7 @@ export default function Home() {
     else{
         vmContractHandler()
     }
-})
+},[vmContract, address, addressDetails, winner])
 
 const vmContractHandler = async () => {
     // if(typeof window !== "undefined" && typeof window.ethereum !== "undefined"){
@@ -42,13 +43,18 @@ const vmContractHandler = async () => {
             web3 = await new Web3(window.ethereum);
             setWeb3(web3)
             // console.log("Web3 set")
-            const abi2 = [{
-                  "inputs": [{
+            const abi2 = [
+                {
+                  "inputs": [
+                    {
                       "internalType": "string[]",
                       "name": "proposalNames",
-                      "type": "string[]"}],
+                      "type": "string[]"
+                    }
+                  ],
                   "stateMutability": "nonpayable",
-                  "type": "constructor"},
+                  "type": "constructor"
+                },
                 {
                   "inputs": [],
                   "name": "chairperson",
@@ -394,7 +400,7 @@ const ConnectWalletHandler = async() => {
               fill="currentColor"
             />
           </svg>
-          <span className="fs-4">VoteIt</span>
+          <span className="fs-4">VoteBallot</span>
         </div>
         <nav className="ms-md-auto">
         {/* <a class="me-3 py-2 text-dark text-decoration-none" href="#">Enterprise</a>
@@ -415,8 +421,8 @@ const ConnectWalletHandler = async() => {
       <div className="pricing-header p-3 pb-md-4 mx-auto text-center">
         <h1 className="display-4 fw-normal">Crypto Survey</h1>
         <p className="fs-5 text-muted">
-          *This survey is conducted only for voluntarily purpose. These results don`&apos;`t represent the actual sentiments of peoples, nor do we holdreponsibility for the results
-        </p>
+          *This survey is conducted only for voluntarily purpose. These results don &apos;t represent the actual sentiments of peoples, nor do we hold reponsibility for the results
+        </p> 
       </div>
     </header>
     <main>
@@ -428,13 +434,13 @@ const ConnectWalletHandler = async() => {
                 </div>
             <div className="card-body">
               <h1 className="card-title pricing-card-title">
-                $0<small className="text-muted fw-light">/mo</small>
+                Bitcoin<small className="text-muted fw-light">₿</small>
               </h1>
                 <ul className="list-unstyled mt-3 mb-4">
-                    <li>10 users included</li>
+                    {/* <li>10 users included</li>
                     <li>2 GB of storage</li>
                     <li>Email support</li>
-                    <li>Help center access</li>
+                    <li>Help center access</li> */}
                 </ul>
               <button
                 type="button"
@@ -452,13 +458,13 @@ const ConnectWalletHandler = async() => {
                 </div>
             <div className="card-body">
               <h1 className="card-title pricing-card-title">
-                $0<small className="text-muted fw-light">/mo</small>
+                Bitcoin<small className="text-muted fw-light"> ₿</small>
               </h1>
                 <ul className="list-unstyled mt-3 mb-4">
-                    <li>10 users included</li>
+                    {/* <li>10 users included</li>
                     <li>2 GB of storage</li>
                     <li>Email support</li>
-                    <li>Help center access</li>
+                    <li>Help center access</li> */}
                 </ul>
               <button
                 type="button"
@@ -476,13 +482,13 @@ const ConnectWalletHandler = async() => {
                 </div>
             <div className="card-body">
               <h1 className="card-title pricing-card-title">
-                $8<small className="text-muted fw-light">/mo</small>
+                Ethereum<small className="text-muted fw-light">Ξ</small>
               </h1>
                 <ul className="list-unstyled mt-3 mb-4">
-                    <li>10 users included</li>
+                    {/* <li>10 users included</li>
                     <li>2 GB of storage</li>
                     <li>Email support</li>
-                    <li>Help center access</li>
+                    <li>Help center access</li> */}
                 </ul>
               <button
                 type="button"
@@ -500,13 +506,13 @@ const ConnectWalletHandler = async() => {
                 </div>
             <div className="card-body">
               <h1 className="card-title pricing-card-title">
-                $1<small className="text-muted fw-light">/mo</small>
+                Ethereum<small className="text-muted fw-light">Ξ</small>
               </h1>
                 <ul className="list-unstyled mt-3 mb-4">
-                    <li>10 users included</li>
+                    {/* <li>10 users included</li>
                     <li>2 GB of storage</li>
                     <li>Email support</li>
-                    <li>Help center access</li>
+                    <li>Help center access</li> */}
                 </ul>
               <button
                 type="button"
@@ -525,13 +531,13 @@ const ConnectWalletHandler = async() => {
                 </div>
             <div className="card-body">
               <h1 className="card-title pricing-card-title">
-                $2<small className="text-muted fw-light">/mo</small>
+                Binance<small className="text-muted fw-light">BNB</small>
               </h1>
                 <ul className="list-unstyled mt-3 mb-4">
-                    <li>10 users included</li>
+                    {/* <li>10 users included</li>
                     <li>2 GB of storage</li>
                     <li>Email support</li>
-                    <li>Help center access</li>
+                    <li>Help center access</li> */}
                 </ul>
               <button
                 type="button"
@@ -549,13 +555,13 @@ const ConnectWalletHandler = async() => {
                 </div>
             <div className="card-body">
               <h1 className="card-title pricing-card-title">
-                $2<small className="text-muted fw-light">/mo</small>
+                Binance<small className="text-muted fw-light">BNB</small>
               </h1>
                 <ul className="list-unstyled mt-3 mb-4">
-                    <li>10 users included</li>
+                    {/* <li>10 users included</li>
                     <li>2 GB of storage</li>
                     <li>Email support</li>
-                    <li>Help center access</li>
+                    <li>Help center access</li> */}
                 </ul>
               <button
                 type="button"
@@ -598,7 +604,7 @@ const ConnectWalletHandler = async() => {
       </div>
       <div className="display-8 text-center mb-4">
       <h3>{voted == 0 && <></>}</h3>
-        <h3>{voted == 1 && address != null &&  weight != 0 && <>{<>You voted {addressMap[addressDetails[3]]}</>}</>}</h3>
+        <h3>{voted == 1 && address != null &&  weight != 0 && <>{<>You supported {addressMap[addressDetails[3]]}</>}</>}</h3>
       </div>
       <hr />
       <div className="p-3 pb-md-5 mx-auto text-center">
@@ -607,7 +613,7 @@ const ConnectWalletHandler = async() => {
           *This DeFi application is built using Web3.0 technology. It is a voluntarily voting ballot to collect the opinion of users on their favourite cryptocurrency.
           The highlighted box shows the most popular crypto chosen by users. First, You have to connect your account through Metamask on Rinkeby Testnet. It will then ask you to 
           get voting right by clicking the button. After you are notified for getting voting right through notification popup, you can vote for any of the cryptocurrency by clicking 
-          the `&quot;`Vote to Support`&quot;` button. You will be notified if your vote has been casted succesfully through popup notification. 
+          the &quot;Vote to Support &quot; button. You will be notified if your vote has been casted succesfully through popup notification. 
           <br/>Ps- In case of a tie, the one which reaches the maximum support first is declared as current winner.
         </p>
       </div>
@@ -621,19 +627,17 @@ const ConnectWalletHandler = async() => {
             <h5>Connect with me Here</h5>
             <ul className="list-unstyled text-small">
               <li className="mb-1">
-                <a className="link-secondary text-decoration-none" href="#">
-                  Github
+                <a className="link-secondary text-decoration-none" href="https://github.com/PrathamGit-dev">
+                  <b>Github</b>
                 </a>
               </li>
               <li className="mb-1">
-                <a className="link-secondary text-decoration-none" href="#">
-                  LinkedIn
+                <a className="link-secondary text-decoration-none" href="https://www.linkedin.com/in/pratham-chaurasia-94a786227/">
+                  <b>LinkedIn</b>
                 </a>
               </li>
               <li className="mb-1">
-                <a className="link-secondary text-decoration-none" href="#">
-                  Twitter
-                </a>
+              <a className="link-secondary text-decoration-none" href = "mailto: chaurasiapratham8@gmail.com"><b>Drop me a mail</b></a>
               </li>
             </ul>
           </div>
