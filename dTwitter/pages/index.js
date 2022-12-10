@@ -181,7 +181,7 @@ const vmContractHandler = async () => {
                 }
               ]
             // console.log("Type of abi2 is", typeof(abi2))
-            const vm = await new web3.eth.Contract(abi2, "0xB59Dad3682226c80512FD90Da2679BE1000304C5");
+            const vm = await new web3.eth.Contract(abi2, "0x421035fD1486b0EF23dfFae85F1DbeA41F270fa7");
             // const vm = await contract(web3);
             setVmContract(vm)
             // console.log("Contract set")
